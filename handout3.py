@@ -17,31 +17,49 @@
 # ...........
 
 def operation(input):
-    print ("waat")
+    #Empty list to append classifications
+    result = []
+    
     #List of reserved words
     reserved = ["while", "for", "switch", "do"]
-    
+
     #Check if input is digit
     if (input.isdigit()):
-        return "Number"
+        result.append("Number")
     
     #Check if input is reserved word
     if input in reserved:
-        return "Reserved"
+        result.append("Reserved")
     
     #Check if input is identifier
     elif input[0] == '_' or input[0].isalpha():
+        flag = True
         for char in input:
-            if not char.isdigit() or not char.isalpha():
-                return False
-        return "Identifier"
-    print ("wat")
+            if not char.isdigit() and not char.isalpha():
+                flag = False
+        if (flag):
+            result.append("Identifier")
+    print(input + ": ")
+    for str in result:
+        if str == "Number":
+            print("Number: Yes")
+        else:
+            print("Number: No")
+        if str == "Identifier":
+            print("Identifier: Yes")
+        else:
+            print("Identifier: No")
+        if str == "Reserved":
+            print("Reserved: Yes")
+        else:
+            print("Reserved: No")
+    print(result)
+    return result
             
-        
-    
-
 def main():
-    print(operation("Token"))
-    print("?")
+    operation("Token")
+    operation("K-mart")
+    operation("23andMe")
+    operation("456")
 
 main()
