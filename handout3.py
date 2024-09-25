@@ -1,5 +1,5 @@
 #Group names: Jiayi Chen, Aderson Pham
-#Assignment : No.1
+#Assignment : Handout #3
 #--------------------------------------------------------
 # Write a program to read one token at a
 # time from the given text file and determine whether the token is
@@ -19,46 +19,49 @@
 def operation(input):
     #Empty list to append classifications
     result = []
-    
+
     #List of reserved words
     reserved = ["while", "for", "switch", "do"]
 
     #Check if input is digit
     if (input.isdigit()):
         result.append("Number")
+    else:
+        result.append("Not Number")
     
     #Check if input is reserved word
     if input in reserved:
         result.append("Reserved")
+    else:
+        result.append("Not Reserved")
     
     #Check if input is identifier
-    elif input[0] == '_' or input[0].isalpha():
+    if input[0] == '_' or input[0].isalpha():
         flag = True
         for char in input:
             if not char.isdigit() and not char.isalpha():
                 flag = False
         if (flag):
             result.append("Identifier")
+        else:
+            result.append("Not Identifier")
     print(input + ": ")
-    for str in result:
-        if str == "Number":
-            print("Number: Yes")
-        else:
-            print("Number: No")
-        if str == "Identifier":
-            print("Identifier: Yes")
-        else:
-            print("Identifier: No")
-        if str == "Reserved":
-            print("Reserved: Yes")
-        else:
-            print("Reserved: No")
-    print(result)
-    return result
+    if "Number" in result:
+        print("Number: Yes")
+    else:
+        print("Number: No")
+    if "Identifier" in result:
+        print("Identifier: Yes")
+    else:
+        print("Identifier: No")
+    if "Reserved" in result:
+        print("Reserved: Yes")
+    else:
+        print("Reserved: No")
+    print()
             
 def main():
-    operation("Token")
-    operation("K-mart")
+    operation("K-Mart")
     operation("23andMe")
     operation("456")
 
