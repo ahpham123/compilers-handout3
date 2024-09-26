@@ -25,15 +25,15 @@ def operation(input):
 
     #Check if input is digit
     if (input.isdigit()):
-        result.append("Number")
+        result.append("Yes")
     else:
-        result.append("Not Number")
+        result.append("No")
     
     #Check if input is reserved word
     if input in reserved:
-        result.append("Reserved")
+        result.append("Yes")
     else:
-        result.append("Not Reserved")
+        result.append("No")
     
     #Check if input is identifier
     if input[0] == '_' or input[0].isalpha():
@@ -42,27 +42,20 @@ def operation(input):
             if not char.isdigit() and not char.isalpha():
                 flag = False
         if (flag):
-            result.append("Identifier")
+            result.append("Yes")
+            res = f"{input:<10}" + f"{result[0]:>15}" + f"{result[1]:>15}" + f"{result[2]:>15}"
+            print(res)
         else:
-            result.append("Not Identifier")
-    print(input + ": ")
-    if "Number" in result:
-        print("Number: Yes")
-    else:
-        print("Number: No")
-    if "Identifier" in result:
-        print("Identifier: Yes")
-    else:
-        print("Identifier: No")
-    if "Reserved" in result:
-        print("Reserved: Yes")
-    else:
-        print("Reserved: No")
-    print()
+            result.append("No")
+            res = f"{input:<10}" + f"{result[0]:>15}" + f"{result[1]:>15}" + f"{result[2]:>15}"
+            print(res)
             
 def main():
+    #2 lines below are cited from https://www.geeksforgeeks.org/read-a-text-file-into-a-string-variable-and-strip-newlines-in-python/?ref=oin_asr10
     data = open("words.txt", 'r').read()
     data = data.split("\n")
+    print(data)
+    print("Token               Number        Identifier    Reserved Word")
     for str in data:
         operation(str)
 main()
