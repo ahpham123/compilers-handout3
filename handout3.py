@@ -61,8 +61,8 @@ def operation(input):
     print()
             
 def main():
-    operation("K-Mart")
-    operation("23andMe")
-    operation("456")
-
+    data = open("words.txt", 'r').read()
+    data = data.split("\n")
+    for str in data:
+        operation(str)
 main()
